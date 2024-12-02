@@ -1,4 +1,7 @@
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CruiseShip {
     private String name;
@@ -11,6 +14,7 @@ public class CruiseShip {
     public CruiseShip(String name, int capacity){
         passengers = new ArrayList<>();
         itinerary = new ArrayList<>();
+        cabinList = new ArrayList<>();
         this.name = name;
         this.capacity = capacity;
     }
@@ -59,6 +63,15 @@ public class CruiseShip {
     //methods here!
 
     public boolean addPassenger(Passenger passenger){
+        // Add a validation check here.
+        // Need to know if the cruise ship is already full or not
+        // If the cruise ship is already full of passengers
+        if (passengers.size() == capacity) {
+            System.out.println("This cruise ship is already full, cannot add more passengers!");
+            return false;
+        }
+
+        // Otherwise add the passenger.
         passengers.add(passenger);
         return true;
     }
@@ -72,19 +85,37 @@ public class CruiseShip {
     }
 
 
-    public void printItinerary(ArrayList<Destination> itinerary){
+    public void printItinerary(){
         //print itinerary here
+        System.out.println("The itinerary of this cruise ship is: ");
+        itinerary.forEach((destination) -> {
+            System.out.println("The name of this destination is: " + destination.getDestination());
+            ArrayList<Activities> activities = destination.getActivitiesList();
+            System.out.println("There are " + activities.size() + " activities at " + destination.getDestination());
+            activities.forEach(Activities::printDetails);
+            destination.printAvailableActivity();
+        });
     }
 
-    public void printCabin(ArrayList<Cabin> cabinList){
-        //print cabin here
+
+    public void printCruise(){
+        //including the ship name + capacity
+        System.out.println("Cruise Ship Name: " + name);
+        System.out.println("Capacity: " + capacity);
+        // print number of cabins
+        System.out.println("Number of cabins in the cruise ship: ");
+        System.out.println(cabinList.size());
+        //Print the passenger list, number of passengers currently on the cruise, and the name and number of each passenger on the cruise.
+        System.out.println("The passenger list is shown below: ");
+        System.out.println("Passenger Name" + "Passenger Number");
+        passengers.forEach(Passenger::printDetails);
     }
 
-    public int getCurrentPassangerCount(ArrayList<Passenger> passengers){
-        int count = 1;
-        return count;
-        //get the passanger count by reading the length of arraylist
+    public void printCabinAllocation() {
+        System.out.println("Cabin allocation for " + name + ":");
+        for (Cabin cabin : cabinList) {
+            cabin.printDetails(); // Use the printDetails method in Cabin
+        }
     }
-
-
 }
+

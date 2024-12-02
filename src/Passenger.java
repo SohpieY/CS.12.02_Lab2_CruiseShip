@@ -3,16 +3,14 @@ import java.util.List;
 
 public abstract class Passenger {
     private String name;
-    private int passangerNum;
-    protected double balance; //encapsulation to hide from other classes, preventing changing the data
-    protected List<Activities> signedUpActities;
+    private int passengerNum;
+    protected List<Activities> signedUpActivities;
 
     //constructors
-    public Passenger(String name, int passangerNum, double balance){
+    public Passenger(String name, int passengerNum){
         this.name = name;
-        this.passangerNum = passangerNum;
-        this.signedUpActities = new ArrayList<>();
-        this.balance = balance;
+        this.passengerNum = passengerNum;
+        this.signedUpActivities = new ArrayList<>();
     }
 
     //getters and setters
@@ -25,57 +23,31 @@ public abstract class Passenger {
         this.name = name;
     }
 
-    public int getPassangerNum() {
-        return passangerNum;
+    public int getPassengerNum() {
+        return passengerNum;
     }
 
-    public void setPassangerNum(int passangerNum) {
-        this.passangerNum = passangerNum;
+    public void setPassengerNum(int passengerNum) {
+        this.passengerNum = passengerNum;
     }
 
-    public double getBalance() {
-        return balance;
+    public List<Activities> getSignedUpActivities() {
+        return signedUpActivities;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setSignedUpActivities(List<Activities> signedUpActivities) {
+        this.signedUpActivities = signedUpActivities;
     }
 
-    public List<Activities> getSignedUpActities() {
-        return signedUpActities;
-    }
-
-    public void setSignedUpActities(List<Activities> signedUpActities) {
-        this.signedUpActities = signedUpActities;
-    }
+    // Method to check current balance
+    public abstract boolean checkBalance(double cost);
 
     // Method to deduct balance for activity cost
-    public boolean deductBalance(double amount) {
-        if (amount <= balance) {
-            balance -= amount; // Deduct activity cost from balance
-            return true; // Successful deduction
-        } else {
-            System.out.println("Insufficient balance to participate in the activity.");
-            return false; // Unsuccessful deduction
-        }
-    }
+    public abstract void updateBalance(double cost);
 
     // Method for participating in an activity
-    public boolean participateInActivity(Activities activity) {
-        if (this instanceof PremiumPassenger) {
-            return activity.signUp(); // Premium
-        } else {
-            // Standard passengers check balance before signing up
-            if (deductBalance(activity.getCost())) {
-                return activity.signUp(); // Deduct balance and sign up
-            }
-            return false; // Unable to participate
-        }
-    }
+    public abstract boolean participateInActivity(Activities activity);
 
     // Method to print passenger details
-    public void printDetails() {
-        System.out.println();
-    }
+    public abstract void printDetails();
 }
-

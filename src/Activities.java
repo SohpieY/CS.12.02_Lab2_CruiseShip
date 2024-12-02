@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 //done
 public abstract class Activities {
     private String name;
     private String description;
     protected double cost;
     private int capacity;
-    private int enrolledCount = 0;
+    private ArrayList<Passenger> enrolledPassengers;
     private Destination destination;
 
     public Activities(String name, String description, double cost, int capacity, Destination destination) {
@@ -31,20 +33,12 @@ public abstract class Activities {
         this.description = description;
     }
 
-    public int getEnrolledCount(){
-        return enrolledCount;
+    public ArrayList<Passenger> getEnrolledPassengers(){
+        return enrolledPassengers;
     }
 
-    public void setEnrolledCount(int enrolledCount){
-        this.enrolledCount = enrolledCount;
-    }
-
-    public Destination getDestination(){
-        return destination;
-    }
-
-    public void setDestination(Destination destination){
-        this.destination = destination;
+    public void setEnrolledPassengers(ArrayList<Passenger> passengers){
+        this.enrolledPassengers = passengers;
     }
 
     public double getCost() {
@@ -63,23 +57,40 @@ public abstract class Activities {
         this.capacity = capacity;
     }
 
-    // Method to check if there is space for more participants
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    // cheking if there is space
     public boolean hasSpace() {
-        return enrolledCount < capacity; // Check for available space
+        return enrolledPassengers.size() < capacity; // Check for available space
     }
 
-    // Method to sign up a participant for the activity
-    public boolean signUp() {
-        if (hasSpace()) {
-            enrolledCount++; // Increment enrolled count
-            return true; // Successfully signed up
+    // participant signing up
+    public boolean signUp(Passenger passenger) {
+        if (hasSpace() && !destination.isPassengerEnrolled(passenger)) {
+            enrolledPassengers.add(passenger);
+            return true;
         } else {
-            System.out.println("No space available for this activity.");
-            return false; // No space available
+            if(!hasSpace()){
+                System.out.println("No space available for this activity.");
+            } else{
+                System.out.println("You are already enrolled in another activity at this destination.");
+            }
+            return false;
         }
+
     }
 
-    // Abstract method to print details of the activity
+    public int getAvailableSpace() {
+        return capacity - enrolledPassengers.size();
+    }
+
+    // abstract method --> so all methods can use
     public abstract void printDetails();
 
 }

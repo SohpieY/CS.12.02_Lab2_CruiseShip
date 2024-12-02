@@ -1,19 +1,26 @@
-public class Cabin extends CruiseShip{
+public class Cabin {
     private String cabinName;
     private Passenger passenger;
-    private String type;
     private boolean isOccupied;
     private boolean isPremium;
 
-    //constructor
-    public Cabin(String name, int capacity, String cabinName, Passenger occupant, String type) {
-        super(name, capacity);
+    // Constructor for creating a cabin with an occupant
+    public Cabin(String cabinName, Passenger occupant, boolean isPremium) {
         this.cabinName = cabinName;
-        this.passenger = null;
-        this.type = type;
+        this.passenger = occupant;
+        this.isPremium = isPremium;
+        this.isOccupied = occupant != null; // Set occupation based on occupant
     }
 
-    //getters & setters
+    // Constructor for creating an empty cabin
+    public Cabin(String cabinName, boolean isPremium) {
+        this.cabinName = cabinName;
+        this.passenger = null;
+        this.isPremium = isPremium;
+        this.isOccupied = false; // Initially unoccupied
+    }
+
+    // Getters & Setters
     public String getCabinName() {
         return cabinName;
     }
@@ -28,54 +35,46 @@ public class Cabin extends CruiseShip{
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
+        this.isOccupied = (passenger != null); //
     }
-
 
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
 
-    //methods (**)
-
-    public boolean addPassenger(Passenger passenger){
-        if(isOccupied = true){
+    // Methods
+    public boolean addPassenger(Passenger passenger) {
+        if (isOccupied) {
             System.out.println("Cabin is already occupied, please book another cabin!");
             return false;
         }
-        if(type.equals("premium") && !(passenger instanceof PremiumPassenger)) {
+        if (isPremium && !(passenger instanceof PremiumPassenger)) {
             System.out.println("Only premium passengers can have access to this cabin! Please choose a standard cabin.");
             return false;
         }
 
         this.passenger = passenger;
+        this.isOccupied = true; // Mark the cabin as occupied
         return true;
     }
 
-    public void removePassenger(){
+    public void removePassenger() {
         this.passenger = null;
+        this.isOccupied = false; // Mark the cabin as unoccupied
     }
 
-    public boolean isOccupied(){
+    public boolean isOccupied() {
         return isOccupied;
     }
 
-    public void bookCabin(){
-        isOccupied = true;
-    }
-
-    public void releaseCabin(){
-        isOccupied = false;
-    }
-
-    public void printDetails(){
+    public void printDetails() {
         System.out.println("Cabin " + cabinName + ":");
-        if(isOccupied){
+        if (isOccupied) {
             System.out.println("Passenger Name: " + passenger.getName());
-            System.out.println("Passenger Number:" + passenger.getPassangerNum());
-        }else{
+            System.out.println("Passenger Number: " + passenger.getPassengerNum());
+        } else {
             System.out.println("Unoccupied");
         }
-
+        System.out.println("---------------------------------------------");
     }
-
 }

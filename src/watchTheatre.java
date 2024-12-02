@@ -36,12 +36,13 @@ public class watchTheatre extends Activities{
         System.out.println("Description: " + getDescription());
         System.out.println("Cost: $" + getCost());
         System.out.println("Capacity: " + getCapacity());
-        System.out.println("Enrolled: " + getEnrolledCount());
         System.out.println("Destination: " + getDestination());
         System.out.println("Starring:");
 
         for(theatreActor actor: actorList){
             System.out.println("-" + actor.toString());
         }
+
+        System.out.println("---------------------------------------------");
     }
 }

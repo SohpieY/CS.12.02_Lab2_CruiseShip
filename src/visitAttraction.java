@@ -20,6 +20,6 @@ public class visitAttraction extends Activities{
         System.out.println("Description: " + getDescription());
         System.out.println("Cost: " + getCost());
         System.out.println("Capacity: " + getCapacity());
-        System.out.println("Destination: " + getDestination());
+        System.out.println("---------------------------------------------");
     }
 }
