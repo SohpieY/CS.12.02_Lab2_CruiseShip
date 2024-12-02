@@ -89,25 +89,24 @@ public class CruiseShip {
         //print itinerary here
         System.out.println("The itinerary of this cruise ship is: ");
         itinerary.forEach((destination) -> {
-            System.out.println("The name of this destination is: " + destination.getDestination());
+            System.out.println("\n The name of this destination is: " + destination.getDestination());
             ArrayList<Activities> activities = destination.getActivitiesList();
-            System.out.println("There are " + activities.size() + " activities at " + destination.getDestination());
+            System.out.println("\n There are " + activities.size() + " activities at " + destination.getDestination());
             activities.forEach(Activities::printDetails);
-            destination.printAvailableActivity();
         });
     }
 
 
     public void printCruise(){
         //including the ship name + capacity
-        System.out.println("Cruise Ship Name: " + name);
-        System.out.println("Capacity: " + capacity);
+        System.out.println("\nCruise Ship Name: " + name);
+        System.out.println("\nCapacity: " + capacity);
         // print number of cabins
-        System.out.println("Number of cabins in the cruise ship: ");
+        System.out.println("\nNumber of cabins in the cruise ship: ");
         System.out.println(cabinList.size());
         //Print the passenger list, number of passengers currently on the cruise, and the name and number of each passenger on the cruise.
-        System.out.println("The passenger list is shown below: ");
-        System.out.println("Passenger Name" + "Passenger Number");
+        System.out.println("\nThe passenger list is shown below: ");
+        System.out.println("---------------------------------------------");
         passengers.forEach(Passenger::printDetails);
     }
 

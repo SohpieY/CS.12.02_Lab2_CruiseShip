@@ -16,10 +16,10 @@ public class visitAttraction extends Activities{
 
     @Override
     public void printDetails() {
-        System.out.println("Attraction Name: " + getAttractionName());
-        System.out.println("Description: " + getDescription());
-        System.out.println("Cost: " + getCost());
-        System.out.println("Capacity: " + getCapacity());
+        System.out.println("\n Attraction Name: " + getAttractionName());
+        System.out.println("\n Description: " + getDescription());
+        System.out.println("\n Cost: " + getCost());
+        System.out.println("\n Capacity: " + getCapacity());
         System.out.println("---------------------------------------------");
     }
 }

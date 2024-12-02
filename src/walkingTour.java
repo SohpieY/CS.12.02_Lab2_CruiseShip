@@ -26,11 +26,11 @@ public class walkingTour extends Activities{
 
     @Override
     public void printDetails() {
-        System.out.println("Trail Name: " + getTrail());
-        System.out.println("Description: " + getDescription());
-        System.out.println("Distance: " + getDistance());
-        System.out.println("Cost: " + getCost());
-        System.out.println("Capacity: " + getCapacity());
+        System.out.println("\n Trail Name: " + getTrail());
+        System.out.println("\n Description: " + getDescription());
+        System.out.println("\n Distance: " + getDistance());
+        System.out.println("\n Cost: " + getCost());
+        System.out.println("\n Capacity: " + getCapacity());
         System.out.println("---------------------------------------------");
     }
 }

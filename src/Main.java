@@ -59,19 +59,28 @@ public class Main {
                 "Gothic Quarter, La Rambla, Park Güell",
                 10.0);
 
+
+
         destinationOne.addActivity(activityOne);
         destinationTwo.addActivity(activityTwo);
         destinationThree.addActivity(activityThree);
 
-        activityOne.signUp(passengerOne); // Katie Fu signs up for Eiffel Tower
-        activityTwo.signUp(passengerTwo); // Meagan Hsu signs up for Broadway Night
-        activityTwo.signUp(passengerThree); // Bridget Tang also signs up for Broadway Night
-        activityThree.signUp(passengerFour); // Mr. Ewing signs up for City Walking Tour
+        cruiseShip.addDestination(destinationOne);
+        cruiseShip.addDestination(destinationTwo);
+        cruiseShip.addDestination(destinationThree);
+
+
+
+        // sign Up Passengers for activities???
+        passengerTwo.participateInActivity(activityOne); // Meagan Hsu signs up for Eiffel Tower
+        passengerTwo.participateInActivity(activityTwo); // Meagan Hsu signs up for Broadway Night
+        passengerFour.participateInActivity(activityThree); // Mr. Ewing signs up for City Walking Tour
+
 
         // Create and Add Cabins
         Cabin cabinOne = new Cabin("1A", passengerOne, true);
-        Cabin cabinTwo = new Cabin("1B", false);
-        Cabin cabinThree = new Cabin("2A", false);
+        Cabin cabinTwo = new Cabin("1B", passengerFive, false);
+        Cabin cabinThree = new Cabin("2A", passengerSix, false);
 
         cruiseShip.addCabin(cabinOne);
         cruiseShip.addCabin(cabinTwo);
@@ -111,13 +120,6 @@ public class Main {
         System.out.println("Cabin Allocation and Activities:");
         for (Cabin cabin : cruiseShip.getCabinList()) {
             cabin.printDetails();
-
-
-            for (Destination destination : cruiseShip.getItinerary()) {
-                System.out.println("Available activities at " + destination.getDestination() + ":");
-                destination.printAvailableActivity();
-            }
-            System.out.println();
         }
     }
 }

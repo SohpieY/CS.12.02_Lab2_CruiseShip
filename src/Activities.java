@@ -15,6 +15,7 @@ public abstract class Activities {
         this.cost = cost;
         this.capacity = capacity;
         this.destination = destination;
+        this.enrolledPassengers = new ArrayList<>();
     }
 
     public String getName() {
@@ -67,7 +68,13 @@ public abstract class Activities {
 
     // cheking if there is space
     public boolean hasSpace() {
-        return enrolledPassengers.size() < capacity; // Check for available space
+        int passengerCount = 0;
+        if(enrolledPassengers.isEmpty()){
+            return passengerCount < capacity;
+        }else{
+            return enrolledPassengers.size() < capacity; // Check for available space
+        }
+
     }
 
     // participant signing up

@@ -32,12 +32,11 @@ public class watchTheatre extends Activities{
     }
 
     public void printDetails(){
-        System.out.println("Theatre Show: " + getName());
-        System.out.println("Description: " + getDescription());
-        System.out.println("Cost: $" + getCost());
-        System.out.println("Capacity: " + getCapacity());
-        System.out.println("Destination: " + getDestination());
-        System.out.println("Starring:");
+        System.out.println("\n Theatre Show: " + getName());
+        System.out.println("\n Description: " + getDescription());
+        System.out.println("\n Cost: $" + getCost());
+        System.out.println("\n Capacity: " + getCapacity());
+        System.out.println("\n Starring:");
 
         for(theatreActor actor: actorList){
             System.out.println("-" + actor.toString());

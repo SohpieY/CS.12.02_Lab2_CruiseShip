@@ -22,26 +22,37 @@ public class PremiumPassenger extends Passenger{
 
     @Override
     public boolean participateInActivity(Activities activity) {
-        System.out.printf("Premium passenger " + getName() + " is participating in activity: " + activity.getName());
         return activity.signUp(this); // Directly sign up for the activity
     }
 
 
     @Override
     public void printDetails() {
-        System.out.println("The name of this passenger is " + this.getName());
-        System.out.println("The number of this passenger is " + this.getPassengerNum());
-        System.out.println("This passenger is a " + passengerType + " passenger");
-        System.out.println("Since this passenger is a Premium Passenger, there's no balance apply");
-        System.out.println("This passenger has already enrolled in " + this.getSignedUpActivities().size() + " activities");
-        System.out.println("These activities are: ");
-        this.getSignedUpActivities().forEach((activity) -> {
-            System.out.println("The destination of this activity is " + activity.getDestination());
-            System.out.println("The price of this activity is " + activity.getCost());
-            System.out.println("---------------------------------------------");
-        });
-        System.out.println("---------------------------------------------");
-    }
+        if (this.getSignedUpActivities().size() == 0) {
+                System.out.println("The name of this passenger is " + this.getName());
+                System.out.println("The number of this passenger is " + this.getPassengerNum());
+                System.out.println("This passenger is a " + passengerType + " passenger");
+                System.out.println("This passenger has already enrolled in " + this.getSignedUpActivities().size() + " activities");
+                System.out.println("This passenger has already enrolled in " + this.getSignedUpActivities().size() + " activities");
+                System.out.println("Would you like to sign up?");
+                System.out.println("---------------------------------------------");
 
+        } else {
+                System.out.println("The name of this passenger is " + this.getName());
+                System.out.println("The number of this passenger is " + this.getPassengerNum());
+                System.out.println("This passenger is a " + passengerType + " passenger");
+                System.out.println("Since this passenger is a Premium Passenger, there's no balance apply");
+                System.out.println("This passenger has already enrolled in " + this.getSignedUpActivities().size() + " activities");
+                System.out.println("These activities are: ");
+                this.getSignedUpActivities().forEach((activity) -> {
+                    System.out.println("Activity Name: " + activity.getName());
+                    System.out.println("The price of this activity is " + activity.getCost());
+                    System.out.println("---------------------------------------------");
+                });
+                System.out.println("---------------------------------------------");
+
+            }
+
+        }
 
 }

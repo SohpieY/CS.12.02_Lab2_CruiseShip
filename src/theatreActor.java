@@ -25,6 +25,6 @@ public class theatreActor{
     }
 
     public String toString(){
-        return name + "as" + character;
+        return name + " as " + character;
     }
 }
