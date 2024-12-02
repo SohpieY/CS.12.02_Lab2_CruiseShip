@@ -18,6 +18,14 @@ public class SeniorPassenger extends Passenger {
         return balance > cost;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public void updateBalance(double cost) {
         this.balance -= cost;
